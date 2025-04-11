@@ -18,34 +18,39 @@ class Command(BaseCommand):
         # Create test users
         users = [
             {"email": "john.doe@example.com", "name": "John Doe", "age": 25},
-            {"email": "jane.smith@example.com", "name": "Jane Smith", "age": 30}
+            {"email": "jane.smith@example.com", "name": "Jane Smith", "age": 30},
+            {"email": "alice.wonderland@example.com", "name": "Alice Wonderland", "age": 28},
+            {"email": "bob.builder@example.com", "name": "Bob Builder", "age": 35}
         ]
         db.users.insert_many(users)
 
         # Create test teams
         teams = [
-            {"name": "Team Alpha", "members": ["john.doe@example.com", "jane.smith@example.com"]}
+            {"name": "Team Alpha", "members": ["john.doe@example.com", "jane.smith@example.com"]},
+            {"name": "Team Beta", "members": ["alice.wonderland@example.com", "bob.builder@example.com"]}
         ]
         db.teams.insert_many(teams)
 
         # Create test activities
         activities = [
-            {"user": "john.doe@example.com", "type": "Running", "duration": 30},
-            {"user": "jane.smith@example.com", "type": "Cycling", "duration": 45}
+            {"user_email": "john.doe@example.com", "activity": "Running", "duration": 30},
+            {"user_email": "jane.smith@example.com", "activity": "Cycling", "duration": 45},
+            {"user_email": "alice.wonderland@example.com", "activity": "Swimming", "duration": 60},
+            {"user_email": "bob.builder@example.com", "activity": "Yoga", "duration": 20}
         ]
         db.activity.insert_many(activities)
 
-        # Create test leaderboard entries
+        # Create test leaderboard
         leaderboard = [
-            {"user": "john.doe@example.com", "score": 100},
-            {"user": "jane.smith@example.com", "score": 150}
+            {"team": "Team Alpha", "points": 100},
+            {"team": "Team Beta", "points": 80}
         ]
         db.leaderboard.insert_many(leaderboard)
 
         # Create test workouts
         workouts = [
-            {"name": "Morning Yoga", "description": "A relaxing yoga session to start your day."},
-            {"name": "HIIT", "description": "High-Intensity Interval Training for quick results."}
+            {"name": "Morning Run", "description": "A quick morning run to start the day", "duration": 30},
+            {"name": "Evening Yoga", "description": "Relaxing yoga session", "duration": 45}
         ]
         db.workouts.insert_many(workouts)
 
