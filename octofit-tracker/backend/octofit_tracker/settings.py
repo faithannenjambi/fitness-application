@@ -1,3 +1,4 @@
+from corsheaders.defaults import default_methods, default_headers
 from pymongo import MongoClient
 
 # MongoDB connection settings
