@@ -1,8 +1,18 @@
-from corsheaders.defaults import default_headers, default_methods
+from pymongo import MongoClient
+
+# MongoDB connection settings
+MONGO_CLIENT = MongoClient('mongodb://localhost:27017/')
+MONGO_DB = MONGO_CLIENT['octofit_db']
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.dummy',  # Placeholder since we are using pymongo directly
+    }
+}
 
 INSTALLED_APPS = [
     # ...existing apps...
-    'corsheaders',
+    'octofit_tracker',
 ]
 
 MIDDLEWARE = [
@@ -15,10 +25,3 @@ CORS_ALLOW_METHODS = list(default_methods)
 CORS_ALLOW_HEADERS = list(default_headers)
 
 ALLOWED_HOSTS = ['*']
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'octofit_db',
-    }
-}
